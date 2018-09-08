@@ -15,7 +15,7 @@ class TransactionView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = Transaction.objects.all()
-        TxHash = self.request.query_params.get('TxHash', None)
-        if TxHash is not None:
-            queryset = queryset.filter(TxHash=TxHash)
+        tx_hash = self.request.query_params.get('TxHash', None)
+        if tx_hash is not None:
+            queryset = queryset.filter(tx_hash=tx_hash)
         return queryset
